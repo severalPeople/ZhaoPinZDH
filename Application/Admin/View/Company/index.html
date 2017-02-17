@@ -58,16 +58,17 @@
 							<?php if (empty($val['logo'])): ?>
 							<?php $val['logo'] = '/Public/Assets/images/dimg.jpg'; ?>
 							<?php endif ?>
-							<img src="{$val.logo}" style="width:45px;height:45px;cursor:pointer;">
+							<img src="{$val.logo|getPictureUrl}" style="width:45px;height:45px;cursor:pointer;">
 						</span>
 					</td>
 					<td><a href="{:U('Home/Index/showCompany', array('id'=>$val['id']))}" target="_blank">{$val.name}【{$val.short_name}】</a></td>
 					<td>{$val.one_desc}</td>
-					<td><a href="{:U('Admin/CompanyJob/index', array('id'=>$val['id']))}" class="btn btn-mini btn-success">点击查看职位</a></br><span>职位总数:4</span></td>
+					<!--<td><a href="{:U('Admin/CompanyJob/index', array('id'=>$val['id']))}" class="btn btn-mini btn-success">点击查看职位</a></br><span>职位总数:4</span></td>-->
+					<td><a href="{:U('Admin/CompanyJob/index', array('id'=>$val['id']))}" class="btn btn-mini btn-success">点击查看职位</a></td>
 					<td>{:C('company_state')[$val['state']]}</br><a href="javascript:$.lagou.formShow('{:U('Admin/Company/new_job_num_edit', array('id'=>$val['id']))}');" class="icon-wrench bigger-70">剩余发布职位数:{$val['new_job_num']}</a></td>
 					<td>
 						<div class="hidden-phone visible-desktop action-buttons">
-							<?php if ($val['state'] == 0): ?>
+							<?php if ($val['status'] == 0): ?>
 								<a href="javascript:;" class="blue tooltip-info no-hover-underline" data-rel="tooltip" data-original-title="重新启用" onclick="$.check('{:U('Admin/Company/allow', array('id'=>$val['id']))}');">
 									<i class="icon-legal bigger-130"></i>
 								</a>

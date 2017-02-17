@@ -10,25 +10,28 @@ use Think\Controller;
 class CompanyRegController extends Controller {
 
 	public $id = null;
+    public $reg_step = null;
 	public $comObj = null;
 
 	public function __construct()
 	{
 		parent::__construct();
 		if (!session('?company')) {
-			$this->error('请先登录', U('Home/Company /index'));
+			$this->error('请先登录', U('Home/Company/index'));
 		}
 		$this->id = session('company.id');
+        $this->reg_step = session('company.step');
 		$this->comObj = D('Company');
 	}
 
 	// 公司注册步骤判断
 	public function step()
 	{
-		$data['id'] = $this->id;
-		$result = $this->comObj->where($data)->find();
-		$step = $result['step'] ? $result['step'] : 1;
+//		$data['id'] = $this->id;
+//		$result = $this->comObj->where($data)->find();
+//		$step = $result['step'] ? $result['step'] : 1;
 
+        $step = $this->reg_step;
 		// 地址中有update标识时执行
 		$arr = I('get.update');
 		if ($arr == 1) {
@@ -160,13 +163,13 @@ class CompanyRegController extends Controller {
 	{
 		$data['id'] = $this->id;
 		$res = $this->comObj->where($data)->find();
-		$this->sendMail($res);
+		$this->sendCompanyMail($res);
 		$this->assign('data', $res);
 		$this->display('step3');
 	}
 
 	// 发送邮箱
-	public function sendMail($res = Null)
+	public function sendCompanyMail($res = Null)
 	{
 		$url = C('DOMAIN').U('Home/CompanyReg/active', array('id'=>$this->id));
 		$msg =<<<HTML

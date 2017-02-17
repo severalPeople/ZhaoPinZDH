@@ -33,7 +33,7 @@ return array(
 
     'PLUGIN_URL' =>'/'.APP_PATH.'Plugin/',
     //定义网站的域名地址(可以方便图片的显示)
-    'SITE_URL'  => 'http://www.onejob.com/',
+    'SITE_URL'  => 'http://www.onejob.com',
 
     // email配置
     'email_host' => 'smtp.163.com',
@@ -67,9 +67,10 @@ return array(
     // 企业状态
     'company_state' => array(
         -1 => '未验证',
-        0 => '禁用',
         1 => '已认证',
-        2 => '未认证'
+        2 => '未认证',
+        3 => '正在申请认证',
+        4 => '认证失败',
     ),
 
     // 城市系统

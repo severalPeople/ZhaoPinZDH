@@ -3,6 +3,11 @@
  * 公共函数
  */
 
+
+function getPictureUrl($path) {
+   return C('SITE_URL').$path;
+}
+
 /**
  * @param String 收件人邮箱
  * @param String 发送的内容

@@ -85,7 +85,7 @@ class CompanyController extends BaseController {
 	{
 		$id = I('get.id');
 		$data['id'] = $id;
-		$data['state'] = 0;
+		$data['status'] = 0;
 		$rs = $this->companyObj->save($data);
 
 		$msg['code'] = 1;
@@ -100,7 +100,7 @@ class CompanyController extends BaseController {
 	{
 		$id = I('get.id');
 		$data['id'] = $id;
-		$data['state'] = 2;
+		$data['status'] = 1;
 		$rs = $this->companyObj->save($data);
 
 		$msg['code'] = 1;

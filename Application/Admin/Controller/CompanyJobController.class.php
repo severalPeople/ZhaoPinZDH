@@ -2,9 +2,6 @@
 /**
  * 公司职位列表
  *
- * @author 	wangz
- * @date 	2014-10-29
- * @version 1.0
  */
 namespace Admin\Controller;
 
@@ -31,6 +28,8 @@ class CompanyJobController extends BaseController {
 		$data = $this->jobInstance->where($where)->limit($Page->firstRow, $Page->listRows)->select();
 
 		$this->assign('data', $data);
+        $this->assign('total', $total);
+        //var_dump($total);die;
 		$this->assign('page', $Page->show());
 		$this->display();
 	}
