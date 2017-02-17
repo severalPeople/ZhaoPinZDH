@@ -1,10 +1,7 @@
 <?php
 /**
- * 注册企业用户
+ * 企业用户进行执照上传等认证
  *
- * @author 	wangz
- * @date     2014-11-1
- * @version  1.0
  *
  */
 namespace Home\Controller;
@@ -18,10 +15,10 @@ class CompanyRegController extends Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if (!session('?user')) {
-			$this->error('请先登录', U('Home/Index/index'));
+		if (!session('?company')) {
+			$this->error('请先登录', U('Home/Company /index'));
 		}
-		$this->id = session('user.id');
+		$this->id = session('company.id');
 		$this->comObj = D('Company');
 	}
 
@@ -173,7 +170,7 @@ class CompanyRegController extends Controller {
 	{
 		$url = C('DOMAIN').U('Home/CompanyReg/active', array('id'=>$this->id));
 		$msg =<<<HTML
-			<h1>感谢您注册拉勾网,请<a href="$url">点击激活</a>账号.</h1>
+			<h1>感谢您注册就业直达号,请<a href="$url">点击激活</a>账号.</h1>
 			<div>$url</div>
 HTML;
 		$project = '企业邮箱激活 - '.C('WEB_NAME');
