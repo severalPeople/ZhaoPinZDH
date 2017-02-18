@@ -4,6 +4,11 @@ use Think\Controller;
 use \Common\Service\AreaCategory;
 class TestController extends Controller {
 
+    public function xun()
+    {
+        require_once ("/ThinkPHP/Library/Vendor/xun/lib/XS.php");
+        $xs = new \XS('xuntest');
+    }
     public function man()
     {
         $res_category = AreaCategory::getInstance();
